@@ -15,7 +15,7 @@ public class NimHumanPlayer extends NimPlayer
         try
         {
             int removeStones = Integer.parseInt(input.nextLine());
-            if(!((removeStones <= upperBoundLimit) && (numberOfStones - removeStones) >= 0))
+            if(!((removeStones <= upperBoundLimit) && (numberOfStones - removeStones >= 0) && (removeStones != 0)))
                 throw new Exception();
             return removeStones;
         }
@@ -26,7 +26,7 @@ public class NimHumanPlayer extends NimPlayer
                 upperLimit = numberOfStones;
             else
                 upperLimit = upperBoundLimit;
-            System.out.println("Invalid Move. You must remove between 1 and " + upperLimit + "stones.");
+            System.out.println("Invalid Move. You must remove between 1 and " + upperLimit + " stones.");
         }
         return 0;
     }

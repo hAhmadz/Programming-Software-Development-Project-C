@@ -103,23 +103,6 @@ public class NimGame
         return true;
     }
     
-    //player turn called for each player / removal of stones.
-    private int getPlayerTurn(NimPlayer player,int upperBoundLimit,int numberOfStones,Scanner inputScan) 
-    {
-        System.out.print("\n");
-        printStones(this.getStoneCount());
-        System.out.println(player.getGivenName() + "'s turn - remove how many?");
-        int removeStones = player.removeStone(upperBoundLimit, numberOfStones, inputScan);
-        
-        
-        // Conflict code due to new try catch handling. will handle it further down the layer
-        if (removeStones == 0)
-            return -1;
-        //
-        numberOfStones = numberOfStones - removeStones;
-        return numberOfStones;
-    }
-    
     //main game loop that handles the upperbound limitations as well and returns true for each successive move.
     private Boolean gameLoop(NimPlayer player,Scanner inputScan)
     {
@@ -130,23 +113,17 @@ public class NimGame
         }
         else
         {
-            int stonesToRemove = getPlayerTurn(player,this.getUpperBound(),this.getStoneCount(),inputScan);
+            int numberOfStones = this.getStoneCount();
+            System.out.print("\n");
+            printStones(this.getStoneCount());
+            System.out.println(player.getGivenName() + "'s turn - remove how many?");
+            int removeStones = player.removeStone(this.getUpperBound(), this.getStoneCount(), inputScan);
             
-            //Repetition of this code in further functions. /Preferrably to be used in lower functions
-            if(stonesToRemove == -1)
+            if(removeStones != 0)
             {
-                System.out.print("\n");
-                int limit = 0;
-                if(this.getStoneCount() < this.getUpperBound())
-                    limit = this.getStoneCount();
-                else
-                    limit = this.getUpperBound();
-                
-                System.out.println("Invalid move. You must remove between 1 and " + limit + " stones.");
-                return true;
+                numberOfStones = numberOfStones - removeStones;
+                this.setStoneCount(numberOfStones);
             }
-            
-            this.setStoneCount(stonesToRemove);
             return true;
         }
     }

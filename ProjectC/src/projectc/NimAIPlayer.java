@@ -8,13 +8,12 @@ public class NimAIPlayer extends NimPlayer implements Testable
 
     public NimAIPlayer() 
     {
-
+        
     }
     
     @Override
     public int removeStone(int upperBoundLimit, int numberOfStones, Scanner input) 
     {
-        List listRands = new ArrayList();
         int removeStones = 1;
         Random r = new Random();
         int M = 0;

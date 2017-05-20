@@ -43,9 +43,6 @@ public class Nimsys
         this.arrayLengthwithValues = arrayLengthwithValues;
     }
     
-    
-    
-    
     public Nimsys(NimPlayer[] playersArrayData , int arrayLengthData)
     {
         this.playerArr = playersArrayData;

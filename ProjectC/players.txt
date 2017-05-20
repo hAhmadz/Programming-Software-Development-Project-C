@@ -1,0 +1,6 @@
+5
+he,he,he,0,0,HUMAN
+lol,lol,lol,0,0,HUMAN
+u,u,u,0,0,AI
+kbha,kriti,bhardwaj,0,0,AI
+hahmadz,haaris,ahmad,0,0,HUMAN
